@@ -64,3 +64,8 @@ kbd {
   letter-spacing: 0.1rem;
   color: #ffc600;
 }
+
+#message {
+  color: white;
+  font-size: 1.3rem;
+}
