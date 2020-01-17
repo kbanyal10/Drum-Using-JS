@@ -72,11 +72,12 @@
 
         key.classList.add("playing");
         audio.currentTime = 0;
+
         audio.play();
       }
 
       const keys = Array.from(document.querySelectorAll(".key"));
-      console.log(keys);
+      // console.log(keys);
       keys.forEach(key =>
         key.addEventListener("transitionend", removeTransition)
       );
@@ -89,21 +90,40 @@
         var i = 0;
         function f() {
           var item = keys[Math.floor(Math.random() * keys.length)];
+          var test = item.dataset.key;
+          var test2 = document.querySelector(`audio[data-key="${test}"]`);
+          console.log(test2);
+          test2.currentTime = 0;
+          test2.play();
           item.classList.add("playing");
-          console.log(item.dataset.key);
-          console.log(item);
+          // console.log(item.dataset.key);
+          // console.log(item);
           i++;
           if (i < 5) {
             if (i == 4) {
               document.getElementById("message").innerHTML =
                 "Now you try to create the same tone";
             }
-            setTimeout(f, 1000);
+            setTimeout(f, 100);
           }
           arr.push(item.dataset.key);
         }
         f();
+        setTimeout(total, 500);
+        function total() {
+          gameResult(arr);
+        }
       });
+      function gameResult(arr, e) {
+        // console.log(arr);
+        // // const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+        // // var arr2 = [];
+        // // arr2.push(key.dataset.key);
+        // // // if (arr2.length == 5) {
+        // // //
+        // // // }
+        // console.log(e);
+      }
     </script>
   </body>
 </html>
