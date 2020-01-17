@@ -85,10 +85,12 @@
       var game = document.querySelector(".game");
 
       game.addEventListener("click", function() {
+        var arr = [];
         var i = 0;
         function f() {
           var item = keys[Math.floor(Math.random() * keys.length)];
           item.classList.add("playing");
+          console.log(item.dataset.key);
           console.log(item);
           i++;
           if (i < 5) {
@@ -98,6 +100,7 @@
             }
             setTimeout(f, 1000);
           }
+          arr.push(item.dataset.key);
         }
         f();
       });
