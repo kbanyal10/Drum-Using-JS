@@ -44,9 +44,10 @@
         <span class="sound">tink</span>
       </div>
       <button class="game">Start Game</button>
-      <button class="gamePlay">Start Playing</button>
+      
     </div>
-    <p id="message">Here your score will be displayed!</p>
+    <div>    <p id="message">Here your score will be displayed!</p>
+    </div>
 
     <audio data-key="65" src="sounds/clap.wav"></audio>
     <audio data-key="83" src="sounds/hihat.wav"></audio>
@@ -86,7 +87,7 @@
       var game = document.querySelector(".game");
 
       game.addEventListener("click", function() {
-        var arr = [];
+       arr = [];
         var i = 0;
         function f() {
           var item = keys[Math.floor(Math.random() * keys.length)];
@@ -102,27 +103,43 @@
           if (i < 5) {
             if (i == 4) {
               document.getElementById("message").innerHTML =
-                "Now you try to create the same tone";
+                "Now you try to create the same tone, press any key to start";
             }
-            setTimeout(f, 100);
+            setTimeout(f, 1000);
           }
-          arr.push(item.dataset.key);
+          arr.push(String.fromCharCode((item.dataset.key)).toLowerCase());
         }
         f();
-        setTimeout(total, 500);
+        setTimeout(total, 5010);
         function total() {
           gameResult(arr);
+          console.log(arr);
         }
       });
-      function gameResult(arr, e) {
-        // console.log(arr);
-        // // const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-        // // var arr2 = [];
-        // // arr2.push(key.dataset.key);
-        // // // if (arr2.length == 5) {
-        // // //
-        // // // }
-        // console.log(e);
+      function gameResult(arr) {
+
+        document.onkeydown = function(e){
+
+            const arrayPlay = [];
+            for(var i = 1; i<6; i++){
+              arrayPlay.push(prompt('Tone sequence' + i ));
+
+            }
+            console.log(arr);
+
+            console.log(arrayPlay);
+
+            if(JSON.stringify(arr)==JSON.stringify(arrayPlay))
+            {
+              alert("You Won!!, you can try again by pressing any key or start the game to start new");
+            }
+            else {
+
+              alert("try again by pressing any key");
+            }
+
+        }
+       
       }
     </script>
   </body>
