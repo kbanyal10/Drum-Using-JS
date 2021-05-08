@@ -1,1 +1,2 @@
-Clone the repo to play drums and create beats.
+# Drum Game
+### Please visit https://kbanyal10.github.io/Drum-Using-JS/ to view the website
